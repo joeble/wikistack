@@ -1,0 +1,29 @@
+{
+  "name": "wikistack",
+  "version": "1.0.0",
+  "description": "wikistack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e html,js,css ./path/to/your/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/joeble/wikistack.git"
+  },
+  "author": "Joseph Knoebel and Kim Sang Woo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeble/wikistack/issues"
+  },
+  "homepage": "https://github.com/joeble/wikistack#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "nunjucks": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+}
