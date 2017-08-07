@@ -26,7 +26,7 @@ app.get('/', function(req, res, next){
   res.render('index');
 })
 
-models.db.sync({})
+models.db.sync({})  //syncing database all at once
 .then(() => {
   app.listen(1337, () => console.log('listening on port 1337'));
 })
