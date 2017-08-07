@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 const path = require('path');
 const models = require('./models');
+const routes = require('./routes');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 //linking static files
 app.use(express.static(path.join(__dirname, '/public')));
 
+app.use(routes);
 app.get('/', function(req, res, next){
   res.render('index');
 })
