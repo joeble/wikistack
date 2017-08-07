@@ -27,8 +27,12 @@ app.use(routes);
 app.get('/', function(req, res, next){
   res.render('index');
 })
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {message: err.message, error: err});
+});
 
-models.db.sync({})  //syncing database all at once
+models.db.sync({force: true})  //syncing database all at once
 .then(() => {
   app.listen(1337, () => console.log('listening on port 1337'));
 })
