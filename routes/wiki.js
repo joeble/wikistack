@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
   });
 
   page.save()
-  .then(function(){ res.redirect('/') })
+  .then(function(){ res.json(page) })
   .catch(next);
 
   // res.json(req.body);
@@ -30,6 +30,24 @@ router.post('/', function(req, res, next) {
 router.get('/add', function(req, res, next) {
   res.render('addpage');
   // res.send('got to GET /wiki/add');
+});
+
+router.get('/:urlTitle', function (req, res, next) {
+  Page.findOne({
+    where: {
+      urlTitle: req.params.urlTitle
+    }
+  })
+  .then(function(foundPage){
+    // res.json(foundPage);
+    // res.render('wikipage', {
+    //   title: foundPage.title,
+
+    // });
+    console.log(foundPage.dataValues)
+    res.render('wikipage', foundPage.dataValues)
+  })
+  .catch(next);
 });
 
 // export at the end

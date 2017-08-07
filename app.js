@@ -32,7 +32,7 @@ app.use(function(err, req, res, next) {
   res.render('error', {message: err.message, error: err});
 });
 
-models.db.sync({force: true})  //syncing database all at once
+models.db.sync({force: false})  //syncing database all at once
 .then(() => {
   app.listen(1337, () => console.log('listening on port 1337'));
 })
