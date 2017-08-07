@@ -21,11 +21,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //linking static files
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 app.use(routes);
 app.get('/', function(req, res, next){
-  res.render('index');
+
+  res.render('index', );
 })
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);

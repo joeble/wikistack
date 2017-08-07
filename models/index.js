@@ -10,6 +10,14 @@ const Page = db.define('page', {
       type: Sequelize.STRING,
       allowNull: false
   },
+  name: {
+      type: Sequelize.TEXT,
+      allowNull: false
+  },
+  email: {
+      type: Sequelize.TEXT,
+      allowNull: false
+  },
   content: {
       type: Sequelize.TEXT,
       allowNull: false

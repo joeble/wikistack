@@ -7,7 +7,10 @@ const User = models.User;
 
 // User functions
 router.get('/', function(req, res, next) {
-  res.redirect('/');
+  Page.findAll({})
+  .then(function (pageList) {
+    res.render('index', {pages: pageList});
+  })
   // res.send('got to GET /wiki/');
 });
 
@@ -16,11 +19,15 @@ router.post('/', function(req, res, next) {
   // getting our page up in dat dataBASE BOIIIIIIII
   let page = Page.build({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    name: req.body.name,
+    email: req.body.email
   });
 
   page.save()
-  .then(function(){ res.json(page) })
+  .then(function(savedPage){
+  res.redirect(savedPage.route);
+  })
   .catch(next);
 
   // res.json(req.body);
@@ -45,7 +52,7 @@ router.get('/:urlTitle', function (req, res, next) {
 
     // });
     console.log(foundPage.dataValues)
-    res.render('wikipage', foundPage.dataValues)
+    res.render('wikipage', foundPage.dataValues);
   })
   .catch(next);
 });
